@@ -1,6 +1,7 @@
 {
-    "name": "xj/yii2-rbac",
+    "name": "xj/yii2-rbac-module",
     "description": "yii2-rbac-module",
+    "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "authors": [
         {

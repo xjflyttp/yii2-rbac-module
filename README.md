@@ -24,6 +24,8 @@ $config['modules']['rbac'] = [
     'userIdField' => 'uid',
     'userNameField' => 'username',
     'userTableModelName' => '\common\models\Members',
+    'allowedIPs' => ['127.0.0.1', '::1'], //dump from yii\gii
+    'layout' => 'main',  //main-parent=use app main | main=rbac layout
 ];
 `````````````````````
 

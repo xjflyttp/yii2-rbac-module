@@ -5,8 +5,13 @@ use yii\rbac\BaseManager;
 
 class Controller extends \yii\web\Controller {
 
-    public $layout = 'main';
     public $rbacMenu = [];
+
+    public function init() {
+        $this->layout = $this->module->layout;
+        return parent::init();
+    }
+
 
     /**
      * @return BaseManager

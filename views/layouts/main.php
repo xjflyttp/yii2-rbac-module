@@ -1,31 +1,64 @@
 <?php
-/* @var $this \yii\web\View */
-use yii\widgets\Breadcrumbs;
-//use yii\bootstrap\Nav;
-//use yii\bootstrap\NavBar;
-use yii\helpers\Url;
+
+use yii\bootstrap\NavBar;
+use yii\bootstrap\Nav;
 use yii\helpers\Html;
-use xj\rbac\RbacAsset;
 
-?><?php $this->beginContent('@app/views/layouts/main.php'); ?>
+/* @var $this \yii\web\View */
+/* @var $content string */
 
-<?php RbacAsset::register($this); ?>
-<div class="rbac">
-    <div class="well">
-        <?= Html::a('角色管理', ['role/index'], ['class' => 'btn btn-primary btn-default', 'role' => 'button']) ?>
-        <?= Html::a('权限管理', ['perm/index'], ['class' => 'btn btn-info btn-default', 'role' => 'button']) ?>
-        <?= Html::a('权限指派', ['assign/index'], ['class' => 'btn btn-warning btn-default', 'role' => 'button']) ?>
-    </div>
-    <div class="row">
-        <div class="col-md-10">
-            <?= $content; ?>
+$asset = xj\rbac\RbacAsset::register($this);
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?= Html::csrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body>
+        <?php $this->beginBody() ?>
+        <?php
+        NavBar::begin([
+            'brandLabel' => 'RBAC',
+            'brandUrl' => ['default/index'],
+            'options' => ['class' => 'navbar-inverse'],
+        ]);
+        echo Nav::widget([
+            'options' => ['class' => 'nav navbar-nav navbar-right'],
+            'items' => [
+                ['label' => '角色管理', 'url' => ['role/index']],
+                ['label' => '权限管理', 'url' => ['perm/index']],
+                ['label' => '权限指派', 'url' => ['assign/index']],
+            ],
+        ]);
+        NavBar::end();
+        ?>
+
+        <div class="container rbac">
+            <div class="row">
+                <div class="col-md-10">
+                    <?= $content; ?>
+                </div>
+                <div class="col-md-2">
+                    <?php foreach ($this->context->rbacMenu as $menu): ?>
+                        <p><?= Html::a($menu['label'], $menu['url'], ['class' => 'btn btn-success btn-default', 'role' => 'button']) ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2">
-            <?php foreach ($this->context->rbacMenu as $menu): ?>
-                <p><?= Html::a($menu['label'], $menu['url'], ['class' => 'btn btn-success btn-default', 'role' => 'button']) ?></p>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</div>
-<?php $this->endContent(); ?>
 
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-left">A Product of <a href="http://www.yiisoft.com/">Yii Software LLC</a></p>
+                <p class="pull-right"><?= Yii::powered() ?></p>
+            </div>
+        </footer>
+
+        <?php $this->endBody() ?>
+    </body>
+</html>
+<?php $this->endPage() ?>

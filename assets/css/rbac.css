@@ -1,0 +1,13 @@
+div.rbac .assign-form {
+    text-align: center;
+}
+div.rbac .assign-form select {
+    width:100%;
+    height:200px;
+}
+div.rbac .assign-form td.operation {
+    width: 100px;
+}
+div.rbac .assign-form td.header-name {
+    width: 25%;
+}

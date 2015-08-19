@@ -1,14 +1,17 @@
-# yii2-rbac-module
+yii2-rbac-module
+=======================
 
-## composer.json
-```php
+
+composer.json
+===================
+````````
 "require": {
-    "xj/yii2-rbac-module": "~1.0.0"
+    "yii2-rbac-module": "*"
 },
-```
+````````
 
-## main.php
-```php
+### config
+`````````````````````php
  $config['components']['authManager'] => [
     'class' => 'yii\rbac\PhpManager',
     'itemFile' => '@common/rbac/items.php',
@@ -24,7 +27,9 @@ $config['modules']['rbac'] = [
     'allowedIPs' => ['127.0.0.1', '::1'], //dump from yii\gii
     'layout' => 'main',  //main-parent=use app main | main=rbac layout
 ];
-```
+`````````````````````
 
-## Access
-    http://project/index.php?r=rbac
+### access
+```````````
+http://project/index.php?r=rbac
+````````````

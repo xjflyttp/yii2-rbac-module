@@ -44,7 +44,7 @@
         'userTableModelName' => '\common\models\Admin',
         'layout' => 'main', //optional
         'allowedIPs' => ['127.0.0.1', '::1'],
-        'roles' => ['*'],
+        'roles' => ['@', '?'],
     ]
 ],
 ```

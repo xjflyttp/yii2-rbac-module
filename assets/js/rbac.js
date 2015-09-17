@@ -90,6 +90,7 @@ var rbacRoleAssign = {
         }
         var _assignList = {};
         $.ajax({
+            cache: false,
             async: false,
             dataType: "json",
             url: this.urlGetAssign,
@@ -220,6 +221,7 @@ var rbacPermAssign = {
         }
         var _assignList = {};
         $.ajax({
+            cache: false,
             async: false,
             dataType: "json",
             url: this.urlGetAssign,

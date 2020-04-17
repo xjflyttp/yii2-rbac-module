@@ -32,6 +32,7 @@ $asset = xj\rbac\RbacAsset::register($this);
             'items' => [
                 ['label' => '角色管理', 'url' => ['role/index']],
                 ['label' => '权限管理', 'url' => ['perm/index']],
+                ['label' => '规则管理', 'url' => ['rule/index']],
                 ['label' => '权限指派', 'url' => ['assign/index']],
             ],
         ]);

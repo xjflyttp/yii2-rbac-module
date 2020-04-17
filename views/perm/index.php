@@ -19,6 +19,7 @@ use yii\helpers\Html;
                 <tr>
                     <td>Name</td>
                     <td>Desc</td>
+                    <td>RuleName</td>
                     <td>Data</td>
                     <td>CreatedAt</td>
                     <td>UpdatedAt</td>
@@ -29,6 +30,7 @@ use yii\helpers\Html;
                     <tr>
                         <td><?= Html::encode($perm->name); ?></td>
                         <td><?= Html::encode($perm->description); ?></td>
+                        <td><?= Html::encode($perm->ruleName); ?></td>
                         <td><?= Html::encode($perm->data); ?></td>
                         <td><?= \Yii::$app->formatter->asDate($perm->createdAt); ?></td>
                         <td><?= \Yii::$app->formatter->asDate($perm->updatedAt); ?></td>

@@ -11,6 +11,7 @@ class ItemForm extends Model {
     const TYPE_PERM = Role::TYPE_PERMISSION;
 
     public $name;
+    public $ruleName;
     public $type;
     public $desc;
     public $data;
@@ -19,6 +20,7 @@ class ItemForm extends Model {
         return [
             [['name'], 'required'],
             ['type', 'in', 'range' => array_keys($this->getTypeOptions())],
+            [['ruleName'], 'string', 'max' => '128'],
             [['desc'], 'string', 'max' => '128'],
             [['data'], 'string', 'max' => '128'],
         ];
@@ -27,6 +29,7 @@ class ItemForm extends Model {
     public function attributeLabels() {
         return [
             'name' => 'Name',
+            'ruleName' => 'RuleName',
             'type' => 'Type',
             'desc' => 'Desc',
             'data' => 'Data',
@@ -35,8 +38,8 @@ class ItemForm extends Model {
 
     public function scenarios() {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['name', 'desc', 'data'];
-        $scenarios['update'] = ['desc', 'data'];
+        $scenarios['create'] = ['name', 'desc', 'data', 'ruleName'];
+        $scenarios['update'] = ['desc', 'data', 'ruleName'];
         return $scenarios;
     }
 

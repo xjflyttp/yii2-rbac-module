@@ -18,30 +18,19 @@ use yii\helpers\Html;
             <table class="table table-bordered">
                 <tr>
                     <td>Name</td>
-                    <td>Desc</td>
-                    <td>RuleName</td>
-                    <td>Data</td>
                     <td>CreatedAt</td>
                     <td>UpdatedAt</td>
                     <td>Operation</td>
                 </tr>
-                <?php foreach ($roles as $role) : ?>
-                    <?php /* @var $role \yii\rbac\Role */ ?>
+                <?php foreach ($rules as $rule) : ?>
+                    <?php /* @var $rule \yii\rbac\Rule */ ?>
                     <tr>
-                        <td><?= Html::encode($role->name); ?></td>
-                        <td><?= Html::encode($role->description); ?></td>
-                        <td><?= Html::encode($role->ruleName); ?></td>
-                        <td><?= Html::encode($role->data); ?></td>
-                        <td><?= \Yii::$app->formatter->asDate($role->createdAt); ?></td>
-                        <td><?= \Yii::$app->formatter->asDate($role->updatedAt); ?></td>
+                        <td><?= Html::encode($rule->name); ?></td>
+                        <td><?= \Yii::$app->formatter->asDate($rule->createdAt); ?></td>
+                        <td><?= \Yii::$app->formatter->asDate($rule->updatedAt); ?></td>
                         <td>
                             <?=
-                            Html::a('编辑', ['update', 'name' => $role->name], [
-                                'class' => 'btn btn-warning',
-                            ])
-                            ?>
-                            <?=
-                            Html::a('删除', ['delete', 'name' => $role->name], [
+                            Html::a('删除', ['delete', 'name' => $rule->name], [
                                 'class' => 'btn btn-danger',
                                 'data' => [
                                     'confirm' => '确认删除？',
@@ -52,6 +41,7 @@ use yii\helpers\Html;
                         </td>
                     </tr>
                 <?php endforeach; ?>
+
             </table>
         </div>
     </div>

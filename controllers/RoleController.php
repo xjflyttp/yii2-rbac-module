@@ -7,9 +7,11 @@ use xj\rbac\componments\Controller;
 use yii\web\NotFoundHttpException;
 use xj\rbac\models\ItemForm;
 
-class RoleController extends Controller {
+class RoleController extends Controller
+{
 
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => \yii\filters\VerbFilter::className(),
@@ -20,23 +22,26 @@ class RoleController extends Controller {
         ];
     }
 
-    public function beforeAction($action) {
+    public function beforeAction($action)
+    {
         $this->rbacMenu = [
             ['label' => '新建', 'url' => ['create']],
         ];
         return parent::beforeAction($action);
     }
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $auth = $this->getAuth();
         $roles = $auth->getRoles();
 
         return $this->render('index', [
-                    'roles' => $roles,
+            'roles' => $roles,
         ]);
     }
 
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new ItemForm(['scenario' => 'create']);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -52,11 +57,12 @@ class RoleController extends Controller {
         }
 
         return $this->render('create', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
-    public function actionUpdate($name) {
+    public function actionUpdate($name)
+    {
         $model = new ItemForm();
         $model->setScenario('update');
 
@@ -77,7 +83,7 @@ class RoleController extends Controller {
         }
 
         return $this->render('update', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -86,7 +92,8 @@ class RoleController extends Controller {
      * @param string $admin
      * @return mixed
      */
-    public function actionDelete($name) {
+    public function actionDelete($name)
+    {
         $this->getAuth()->remove($this->findModel($name));
         return $this->redirect(['index']);
     }
@@ -97,7 +104,8 @@ class RoleController extends Controller {
      * @return Role
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($name) {
+    protected function findModel($name)
+    {
         $auth = $this->getAuth();
         if (($role = $auth->getRole($name)) !== null) {
             return $role;

@@ -56,6 +56,7 @@ class PermController extends Controller {
             $perm = $auth->createPermission($model->name);
             $perm->description = $model->desc;
             $perm->data = $model->data;
+            $perm->ruleName = $model->ruleName;
             $perm->createdAt = $perm->updatedAt = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
             $auth->add($perm);
 
@@ -73,11 +74,13 @@ class PermController extends Controller {
 
         $role = $this->findModel($name);
         $model->name = $role->name;
+        $model->ruleName = $role->ruleName;
         $model->data = $role->data;
         $model->desc = $role->description;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $auth = $this->getAuth();
+            $role->ruleName = $model->ruleName;
             $role->description = $model->desc;
             $role->data = $model->data;
             $role->updatedAt = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : \time();

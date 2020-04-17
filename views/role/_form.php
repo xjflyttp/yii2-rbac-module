@@ -17,6 +17,7 @@ use common\rbac\models\RoleForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 24, 'disabled' => ($model->scenario == 'update') ? true : false]) ?>
     <?= $form->field($model, 'desc')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'ruleName')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'data')->textInput(['maxlength' => 128]) ?>
 
     <div class="form-group">
